@@ -254,7 +254,7 @@ body {
   flex-wrap: wrap;
   align-items: center;
 }
-.catalog-navigation-drop-menu {
+.catalog-navigation-drop-menu-header {
   font-family: "Raleway";
   font-size: 18px;
   font-weight: 800;
@@ -267,7 +267,7 @@ body {
   position: relative;
   margin-right: 280px;
 }
-.catalog-navigation-drop-menu-button {
+.catalog-navigation-drop-menu-header-button {
   margin-left: 7px;
   width: 50px;
   height: 50px;
@@ -283,16 +283,16 @@ body {
   transition: 0.2s;
   cursor: pointer;
 }
-.catalog-navigation-drop-menu-button:hover {
+.catalog-navigation-drop-menu-header-button:hover {
   opacity: 1;
 }
-.catalog-navigation-drop-menu-button:focus + .purple-outline {
+.catalog-navigation-drop-menu-header-button:focus + .purple-outline {
   outline: 2px solid #af4fff;
 }
-.catalog-navigation-drop-menu-button:active {
+.catalog-navigation-drop-menu-header-button:active {
   opacity: 1;
 }
-.catalog-navigation-drop-menu-button:active + .purple-outline {
+.catalog-navigation-drop-menu-header-button:active + .purple-outline {
   outline: none;
 }
 .catalog-navigation-list {
@@ -328,6 +328,38 @@ body {
   outline: none;
 }
 
+.drop-menu {
+  position: absolute;
+  padding: 30px 60px 5%;
+  width: 100%;
+  left: 0;
+  top: 58%;
+  background-color: #ffe17f;
+  z-index: 1;
+}
+.drop-menu-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: 220px 220px 220px;
+  gap: 30px 40px;
+}
+.drop-menu-link {
+  color: #000;
+  font-size: 16px;
+  text-decoration: none;
+}
+.drop-menu-link:hover {
+  opacity: 0.6;
+}
+.drop-menu-link:active {
+  opacity: 0.3;
+}
+.drop-menu-closed {
+  display: none;
+}
+
 .slider-section {
   position: relative;
   top: -150px;
@@ -336,7 +368,6 @@ body {
 
 .slider-number-container {
   padding-top: 10px;
-  padding-right: 60px;
   background-color: #ffe17f;
   display: flex;
   justify-content: flex-end;
