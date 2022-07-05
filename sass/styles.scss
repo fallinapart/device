@@ -199,14 +199,6 @@ body {
       background-size: 16px 16px;
       background-position: center left 16px;
       background-color: transparent;
-      z-index: 1;
-
-      &:focus + .purple-outline {
-        @include outline;
-
-        top: 0;
-        left: 0;
-      }
 
       &:disabled {
         opacity: 0.3;
@@ -224,7 +216,6 @@ body {
       border-radius: 0 50px 50px 0;
       background-color: transparent;
       cursor: pointer;
-      z-index: 1;
 
       &:hover {
         background-color: #000;
@@ -316,13 +307,26 @@ body {
   flex-wrap: wrap;
   align-items: center;
 
-  &-drop-menu-header {
-    @include main-link;
+  .drop-menu {
+    z-index: 1;
 
-    display: flex;
-    align-items: center;
-    position: relative;
-    margin-right: 280px;
+    &-visible {
+      display: flex;
+      align-items: center;
+    }
+
+    &-header {
+      display: inline-block;
+      margin: 0;
+      margin-right: 10px;
+      font-family: "Raleway";
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      color: #000;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
 
     &-button {
       margin-left: 7px;
@@ -335,25 +339,58 @@ body {
       background-repeat: no-repeat;
       background-position: center;
       background-color: transparent;
-      position: relative;
-      z-index: 1;
       transition: $transition;
       cursor: pointer;
 
-      &:hover {
-        opacity: 1;
-      }
-
-      &:focus + .purple-outline {
+      &:focus {
         @include outline;
-      }
-
-      &:active {
         opacity: 1;
       }
+    }
 
-      &:active + .purple-outline {
-        outline: none;
+    &:hover .menu {
+      display: block;
+    }
+
+    &:hover .drop-menu-button {
+      opacity: 1;
+      background-image: url("../images/minus.svg");
+    }
+  }
+
+  .menu {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    padding: 20px 60px 5%;
+    background-color: $color-main;
+    z-index: 1;
+    display: none;
+  
+    &-list {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      display: grid;
+      grid-template-columns: 220px 220px 220px;
+      gap: 30px 40px;
+    }
+  
+    &-link {
+      font-family: "Rubik", sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: #000;
+      text-decoration: none;
+      text-transform: none;
+      letter-spacing: normal;
+  
+      &:hover {
+        opacity: 0.6;
+      }
+  
+      &:active {
+        opacity: 0.3;
       }
     }
   }
@@ -361,6 +398,7 @@ body {
   &-list {
     padding: 0;
     margin: 0;
+    margin-left: auto;
     list-style-type: none;
     display: flex;
     flex-wrap: wrap;
@@ -372,8 +410,6 @@ body {
     &-link {
       @include main-link;
       transition: $transition;
-      position: relative;
-      z-index: 1;
 
       &:hover {
         opacity: 0.6;
@@ -388,43 +424,6 @@ body {
         outline: none;
       }
     }
-  }
-}
-
-.drop-menu {
-  position: absolute;
-  padding: 30px 60px 5%;
-  width: 100%;
-  left: 0;
-  top: 58%;
-  background-color: $color-main;
-  z-index: 1;
-
-  &-list {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    display: grid;
-    grid-template-columns: 220px 220px 220px;
-    gap: 30px 40px;
-  }
-
-  &-link {
-    color: #000;
-    font-size: 16px;
-    text-decoration: none;
-
-    &:hover {
-      opacity: 0.6;
-    }
-
-    &:active {
-      opacity: 0.3;
-    }
-  }
-
-  &-closed {
-    display: none;
   }
 }
 // === / HEADER ===
@@ -627,10 +626,8 @@ body {
     margin-bottom: 20px;
 
     &-link{
-      position: relative;
       color: #000;
       text-decoration: none;
-      z-index: 1;
       transition: $transition;
 
       &:hover .assortment-list-item-icon {
@@ -716,7 +713,7 @@ body {
   position: relative;
   margin-bottom: 35px;
 
-  &-background {
+  &::after {
     content: "";
     position: absolute;
     background-color: $color-background;
@@ -758,7 +755,6 @@ body {
     display: block;
     background: none;
     border: none;
-    z-index: 1;
     cursor: pointer;
 
     &-current {
