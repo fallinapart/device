@@ -316,7 +316,7 @@ body {
   flex-wrap: wrap;
   align-items: center;
 
-  &-drop-menu {
+  &-drop-menu-header {
     @include main-link;
 
     display: flex;
@@ -390,6 +390,43 @@ body {
     }
   }
 }
+
+.drop-menu {
+  position: absolute;
+  padding: 30px 60px 5%;
+  width: 100%;
+  left: 0;
+  top: 58%;
+  background-color: $color-main;
+  z-index: 1;
+
+  &-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: 220px 220px 220px;
+    gap: 30px 40px;
+  }
+
+  &-link {
+    color: #000;
+    font-size: 16px;
+    text-decoration: none;
+
+    &:hover {
+      opacity: 0.6;
+    }
+
+    &:active {
+      opacity: 0.3;
+    }
+  }
+
+  &-closed {
+    display: none;
+  }
+}
 // === / HEADER ===
 
 
@@ -402,7 +439,6 @@ body {
 
 .slider-number-container {
   padding-top: 10px;
-  padding-right: 60px;
   background-color: $color-main;
   display: flex;
   justify-content: flex-end;
