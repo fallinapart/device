@@ -152,12 +152,6 @@ body {
   background-size: 16px 16px;
   background-position: center left 16px;
   background-color: transparent;
-  z-index: 1;
-}
-.navigation-search-input:focus + .purple-outline {
-  outline: 2px solid #af4fff;
-  top: 0;
-  left: 0;
 }
 .navigation-search-input:disabled {
   opacity: 0.3;
@@ -174,7 +168,6 @@ body {
   border-radius: 0 50px 50px 0;
   background-color: transparent;
   cursor: pointer;
-  z-index: 1;
 }
 .navigation-search-button:hover {
   background-color: #000;
@@ -254,7 +247,17 @@ body {
   flex-wrap: wrap;
   align-items: center;
 }
-.catalog-navigation-drop-menu-header {
+.catalog-navigation .drop-menu {
+  z-index: 1;
+}
+.catalog-navigation .drop-menu-visible {
+  display: flex;
+  align-items: center;
+}
+.catalog-navigation .drop-menu-header {
+  display: inline-block;
+  margin: 0;
+  margin-right: 10px;
   font-family: "Raleway";
   font-size: 18px;
   font-weight: 800;
@@ -262,12 +265,8 @@ body {
   color: #000;
   text-decoration: none;
   text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  position: relative;
-  margin-right: 280px;
 }
-.catalog-navigation-drop-menu-header-button {
+.catalog-navigation .drop-menu-button {
   margin-left: 7px;
   width: 50px;
   height: 50px;
@@ -278,26 +277,56 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-color: transparent;
-  position: relative;
-  z-index: 1;
   transition: 0.2s;
   cursor: pointer;
 }
-.catalog-navigation-drop-menu-header-button:hover {
-  opacity: 1;
-}
-.catalog-navigation-drop-menu-header-button:focus + .purple-outline {
+.catalog-navigation .drop-menu-button:focus {
   outline: 2px solid #af4fff;
-}
-.catalog-navigation-drop-menu-header-button:active {
   opacity: 1;
 }
-.catalog-navigation-drop-menu-header-button:active + .purple-outline {
-  outline: none;
+.catalog-navigation .drop-menu:hover .menu {
+  display: block;
+}
+.catalog-navigation .drop-menu:hover .drop-menu-button {
+  opacity: 1;
+  background-image: url("../images/minus.svg");
+}
+.catalog-navigation .menu {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  padding: 20px 60px 5%;
+  background-color: #ffe17f;
+  z-index: 1;
+  display: none;
+}
+.catalog-navigation .menu-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: 220px 220px 220px;
+  gap: 30px 40px;
+}
+.catalog-navigation .menu-link {
+  font-family: "Rubik", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #000;
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: normal;
+}
+.catalog-navigation .menu-link:hover {
+  opacity: 0.6;
+}
+.catalog-navigation .menu-link:active {
+  opacity: 0.3;
 }
 .catalog-navigation-list {
   padding: 0;
   margin: 0;
+  margin-left: auto;
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
@@ -314,8 +343,6 @@ body {
   text-decoration: none;
   text-transform: uppercase;
   transition: 0.2s;
-  position: relative;
-  z-index: 1;
 }
 .catalog-navigation-list-link:hover {
   opacity: 0.6;
@@ -326,38 +353,6 @@ body {
 .catalog-navigation-list-link:active {
   opacity: 0.3;
   outline: none;
-}
-
-.drop-menu {
-  position: absolute;
-  padding: 30px 60px 5%;
-  width: 100%;
-  left: 0;
-  top: 58%;
-  background-color: #ffe17f;
-  z-index: 1;
-}
-.drop-menu-list {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  display: grid;
-  grid-template-columns: 220px 220px 220px;
-  gap: 30px 40px;
-}
-.drop-menu-link {
-  color: #000;
-  font-size: 16px;
-  text-decoration: none;
-}
-.drop-menu-link:hover {
-  opacity: 0.6;
-}
-.drop-menu-link:active {
-  opacity: 0.3;
-}
-.drop-menu-closed {
-  display: none;
 }
 
 .slider-section {
@@ -532,10 +527,8 @@ body {
   margin-bottom: 20px;
 }
 .assortment-list-item-link {
-  position: relative;
   color: #000;
   text-decoration: none;
-  z-index: 1;
   transition: 0.2s;
 }
 .assortment-list-item-link:hover .assortment-list-item-icon {
@@ -603,7 +596,7 @@ body {
   position: relative;
   margin-bottom: 35px;
 }
-.services-background {
+.services::after {
   content: "";
   position: absolute;
   background-color: #f0f0f0;
@@ -641,7 +634,6 @@ body {
   display: block;
   background: none;
   border: none;
-  z-index: 1;
   cursor: pointer;
 }
 .services-button-current {
