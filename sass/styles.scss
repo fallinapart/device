@@ -332,6 +332,7 @@ body {
       position: relative;
       z-index: 1;
       transition: $transition;
+      cursor: pointer;
 
       &:hover {
         opacity: 1;
@@ -438,6 +439,7 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     transition: $transition;
+    cursor: pointer;
 
     &-next {
       transform: rotate(180deg);
@@ -506,6 +508,7 @@ body {
     border: 2px solid #000;
     border-radius: 100%;
     background-color: transparent;
+    cursor: pointer;
 
     &-current {
       background-color: #000;
@@ -714,6 +717,7 @@ body {
     background: none;
     border: none;
     z-index: 1;
+    cursor: pointer;
 
     &-current {
       color: $color-main;
@@ -780,6 +784,7 @@ body {
   border: none;
   background-color: $color-background;
   margin-bottom: 70px;
+  cursor: pointer;
 
   &::before {
     position: absolute;
@@ -992,6 +997,7 @@ body {
       letter-spacing: 0.2em;
       text-transform: uppercase;
       border: 3px solid #c4c4c4;
+      cursor: pointer;
     }
   }
 
@@ -1007,3 +1013,119 @@ body {
   }
 }
 // === / NEWSLETTER ===
+
+
+// === FOOTER ===
+.footer {
+  padding: 62px 0;
+  background-color: #444;
+  color: #fff;
+
+  &-content {
+    display: flex;
+    align-items: flex-start;
+
+    &-right-column {
+      margin-left: auto;
+    }
+  }
+
+  &-logo {
+    margin-bottom: 35px;
+  }
+
+  &-address {
+    margin: 0;
+    line-height: 20px;
+    width: 240px;
+    margin-right: 120px;
+  }
+
+  &-menu {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 62px;
+
+    &-item:not(:last-child) {
+      margin-right: 35px;
+    }
+
+    &-link {
+      color: inherit;
+      text-decoration: none;
+      font-family: "Raleway", sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+  }
+
+  &-social-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+
+    &-item:not(:last-child) {
+      margin-right: 15px;
+    }
+
+    &-item {
+      &:nth-of-type(1) .footer-social-list-link {
+        background-image: url("../images/telegram-icon.svg");
+        background-size: 13px 11px;
+      }
+
+      &:nth-of-type(2) .footer-social-list-link {
+        background-image: url("../images/youtube-icon.svg");
+        background-size: 16px 10px;
+      }
+
+      &:nth-of-type(3) .footer-social-list-link {
+        background-image: url("../images/twitter-icon.svg");
+        background-size: 15px 14px;
+      }
+    }
+
+    &-link {
+      display: block;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+
+  &-phone {
+    display: block;
+    color: #fff;
+    margin-bottom: 63px;
+  }
+
+  .my-logo {
+    font-family: "Raleway", sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: #ffc700;
+    cursor: pointer;
+    text-decoration: none;
+    transition: $transition;
+
+    &:hover {
+      color: violet;
+    }
+
+    &:active {
+      color: violet;
+      opacity: 0.6;
+    }
+  }
+}
+// === / FOOTER ===
