@@ -48,6 +48,10 @@
   text-decoration: none;
   text-transform: uppercase;
 }
+
+@mixin outline {
+  outline: 2px solid #af4fff;
+}
 // === / MIXINS ===
 
 
@@ -55,7 +59,7 @@
 $transition: .2s;
 
 $color-main: #ffe17f;
-$color-focus: #af4fff;
+$color-additional: #ffc700;
 $color-background: #f0f0f0;
 // === VARIABLES ===
 
@@ -114,6 +118,7 @@ body {
 
 .main-link {
   @include main-link;
+
   position: relative;
   padding: 10px 15px;
   transition: $transition;
@@ -135,7 +140,7 @@ body {
   }
 
   &:focus {
-    outline: 2px solid $color-focus;
+    @include outline;
   }
 
   &:active {
@@ -197,9 +202,10 @@ body {
       z-index: 1;
 
       &:focus + .purple-outline {
+        @include outline;
+
         top: 0;
         left: 0;
-        outline: 2px solid $color-focus;
       }
 
       &:disabled {
@@ -226,7 +232,7 @@ body {
       }
 
       &:focus {
-        outline: 2px solid $color-focus;
+        @include outline;
       }
 
       &:active {
@@ -251,7 +257,7 @@ body {
     }
 
     &:focus {
-      outline: 2px solid $color-focus;
+      @include outline;
     }
 
     &:active {
@@ -339,7 +345,7 @@ body {
       }
 
       &:focus + .purple-outline {
-        outline: 2px solid $color-focus;
+        @include outline;
       }
 
       &:active {
@@ -374,7 +380,7 @@ body {
       }
   
       &:focus {
-        outline: 2px solid $color-focus;
+        @include outline;
       }
    
       &:active {
@@ -450,7 +456,7 @@ body {
     }
 
     &:focus {
-      outline: 2px solid $color-focus;
+      @include outline;
     }
 
     &:active {
@@ -519,7 +525,7 @@ body {
     }
 
     &:focus {
-      outline: 2px solid $color-focus;
+      @include outline;
     }
     
     &:active {
@@ -592,7 +598,7 @@ body {
       transition: $transition;
 
       &:hover .assortment-list-item-icon {
-        background-color: #FFC700;
+        background-color: $color-additional;
       }
 
       &:focus {
@@ -600,7 +606,7 @@ body {
       }
 
       &:focus + .purple-outline {
-        outline: 2px solid $color-focus;
+        @include outline;
       }
 
       &:active {
@@ -817,7 +823,7 @@ body {
   }
 
   &:hover::before {
-    background-color: #ffc700;
+    background-color: $color-additional;
   }
 
   &:hover::after {
@@ -825,7 +831,7 @@ body {
   }
 
   &:focus {
-    outline: 2px solid $color-focus;
+    @include outline;
   }
   
   &:active {
@@ -888,9 +894,15 @@ body {
     }
 
     &-phone {
+      display: inline-block;
       font-family: inherit;
       color: inherit;
       font-size: 18px;
+      transition: $transition;
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
 
@@ -934,7 +946,7 @@ body {
       content: "";
       width: 8px;
       height: 8px;
-      background-color: #FFC700;
+      background-color: $color-additional;
       border-radius: 50%;
     }
   }
@@ -964,7 +976,7 @@ body {
     display: inline-block;
   }
 
-  &-input-container {
+  &-form-container {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -986,6 +998,18 @@ body {
       font-size: 18px;
       color: #444;
       outline: none;
+
+      &:focus {
+        background-color: #dcdcdc;
+      }
+      
+      &:invalid {
+        border-bottom: 3px solid #ff3d3d;
+      }
+
+      &:disabled {
+        opacity: 0.3;
+      }
     }
   
     &-button {
@@ -998,6 +1022,22 @@ body {
       text-transform: uppercase;
       border: 3px solid #c4c4c4;
       cursor: pointer;
+      transition: $transition;
+
+      &:hover {
+        color: #fff;
+        background-color: #000;
+        border-color: #000;
+      }
+
+      &:focus {
+        @include outline;
+      }
+
+      &:active {
+        color: rgba(255, 255, 255, 0.3);
+        outline: none;
+      }
     }
   }
 
@@ -1031,7 +1071,21 @@ body {
   }
 
   &-logo {
+    display: inline-block;
     margin-bottom: 35px;
+
+    &:hover {
+      opacity: 0.6;
+    }
+
+    &:focus {
+      @include outline;
+    }
+
+    &:active {
+      opacity: 0.3;
+      outline: none;
+    }
   }
 
   &-address {
@@ -1061,6 +1115,21 @@ body {
       font-weight: 800;
       letter-spacing: 0.2em;
       text-transform: uppercase;
+      transition: $transition;
+
+      &:hover {
+        color: $color-additional;
+        border-bottom: 2px solid $color-additional;
+      }
+
+      &:focus {
+        @include outline;
+      }
+
+      &:active {
+        opacity: 0.3;
+        outline: none;
+      }
     }
   }
 
@@ -1075,31 +1144,56 @@ body {
       margin-right: 15px;
     }
 
-    &-item {
-      &:nth-of-type(1) .footer-social-list-link {
-        background-image: url("../images/telegram-icon.svg");
-        background-size: 13px 11px;
-      }
-
-      &:nth-of-type(2) .footer-social-list-link {
-        background-image: url("../images/youtube-icon.svg");
-        background-size: 16px 10px;
-      }
-
-      &:nth-of-type(3) .footer-social-list-link {
-        background-image: url("../images/twitter-icon.svg");
-        background-size: 15px 14px;
-      }
-    }
-
     &-link {
+      position: relative;
       display: block;
       width: 40px;
       height: 40px;
       background-color: rgba(255, 255, 255, 0.3);
       border-radius: 50%;
-      background-repeat: no-repeat;
-      background-position: center;
+      transition: $transition;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      &-telegram::after {
+        background-image: url("../images/telegram-icon.svg");
+        background-size: 14px 12px;
+      }
+
+      &-youtube::after {
+        background-image: url("../images/youtube-icon.svg");
+        background-size: 16px 11px;
+      }
+
+      &-twitter::after {
+        background-image: url("../images/twitter-icon.svg");
+        background-size: 15px 14px;
+      }
+
+      &:hover {
+        background-color: $color-additional;
+      }
+
+      &:focus {
+        @include outline;
+      }
+
+      &:active::after {
+        opacity: 0.3;
+      }
+
+      &:active {
+        outline: none;
+      }
     }
   }
 
@@ -1107,13 +1201,27 @@ body {
     display: block;
     color: #fff;
     margin-bottom: 63px;
+    transition: $transition;
+
+    &:hover {
+      color: $color-additional;
+    }
+
+    &:focus {
+      @include outline();
+    }
+
+    &:active {
+      opacity: 0.3;
+      outline: none;
+    }
   }
 
   .my-logo {
     font-family: "Raleway", sans-serif;
     font-size: 20px;
     font-weight: 800;
-    color: #ffc700;
+    color: $color-additional;
     cursor: pointer;
     text-decoration: none;
     transition: $transition;

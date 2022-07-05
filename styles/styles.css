@@ -155,9 +155,9 @@ body {
   z-index: 1;
 }
 .navigation-search-input:focus + .purple-outline {
+  outline: 2px solid #af4fff;
   top: 0;
   left: 0;
-  outline: 2px solid #af4fff;
 }
 .navigation-search-input:disabled {
   opacity: 0.3;
@@ -508,7 +508,7 @@ body {
   transition: 0.2s;
 }
 .assortment-list-item-link:hover .assortment-list-item-icon {
-  background-color: #FFC700;
+  background-color: #ffc700;
 }
 .assortment-list-item-link:focus {
   outline: none;
@@ -753,9 +753,14 @@ body {
   font-size: 18px;
 }
 .about-us-address-phone {
+  display: inline-block;
   font-family: inherit;
   color: inherit;
   font-size: 18px;
+  transition: 0.2s;
+}
+.about-us-address-phone:hover {
+  transform: scale(1.1);
 }
 .about-us-schedule {
   margin: 0;
@@ -794,7 +799,7 @@ body {
   content: "";
   width: 8px;
   height: 8px;
-  background-color: #FFC700;
+  background-color: #ffc700;
   border-radius: 50%;
 }
 
@@ -815,7 +820,7 @@ body {
 .newsletter .section-description {
   display: inline-block;
 }
-.newsletter-input-container {
+.newsletter-form-container {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -837,6 +842,15 @@ body {
   color: #444;
   outline: none;
 }
+.newsletter-form-input:focus {
+  background-color: #dcdcdc;
+}
+.newsletter-form-input:invalid {
+  border-bottom: 3px solid #ff3d3d;
+}
+.newsletter-form-input:disabled {
+  opacity: 0.3;
+}
 .newsletter-form-button {
   padding: 0 35px;
   align-self: stretch;
@@ -847,6 +861,19 @@ body {
   text-transform: uppercase;
   border: 3px solid #c4c4c4;
   cursor: pointer;
+  transition: 0.2s;
+}
+.newsletter-form-button:hover {
+  color: #fff;
+  background-color: #000;
+  border-color: #000;
+}
+.newsletter-form-button:focus {
+  outline: 2px solid #af4fff;
+}
+.newsletter-form-button:active {
+  color: rgba(255, 255, 255, 0.3);
+  outline: none;
 }
 .newsletter-span {
   font-size: 18px;
@@ -872,7 +899,18 @@ body {
   margin-left: auto;
 }
 .footer-logo {
+  display: inline-block;
   margin-bottom: 35px;
+}
+.footer-logo:hover {
+  opacity: 0.6;
+}
+.footer-logo:focus {
+  outline: 2px solid #af4fff;
+}
+.footer-logo:active {
+  opacity: 0.3;
+  outline: none;
 }
 .footer-address {
   margin: 0;
@@ -899,6 +937,18 @@ body {
   font-weight: 800;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+  transition: 0.2s;
+}
+.footer-menu-link:hover {
+  color: #ffc700;
+  border-bottom: 2px solid #ffc700;
+}
+.footer-menu-link:focus {
+  outline: 2px solid #af4fff;
+}
+.footer-menu-link:active {
+  opacity: 0.3;
+  outline: none;
 }
 .footer-social-list {
   margin: 0;
@@ -910,31 +960,64 @@ body {
 .footer-social-list-item:not(:last-child) {
   margin-right: 15px;
 }
-.footer-social-list-item:nth-of-type(1) .footer-social-list-link {
-  background-image: url("../images/telegram-icon.svg");
-  background-size: 13px 11px;
-}
-.footer-social-list-item:nth-of-type(2) .footer-social-list-link {
-  background-image: url("../images/youtube-icon.svg");
-  background-size: 16px 10px;
-}
-.footer-social-list-item:nth-of-type(3) .footer-social-list-link {
-  background-image: url("../images/twitter-icon.svg");
-  background-size: 15px 14px;
-}
 .footer-social-list-link {
+  position: relative;
   display: block;
   width: 40px;
   height: 40px;
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 50%;
+  transition: 0.2s;
+}
+.footer-social-list-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
   background-repeat: no-repeat;
   background-position: center;
+}
+.footer-social-list-link-telegram::after {
+  background-image: url("../images/telegram-icon.svg");
+  background-size: 14px 12px;
+}
+.footer-social-list-link-youtube::after {
+  background-image: url("../images/youtube-icon.svg");
+  background-size: 16px 11px;
+}
+.footer-social-list-link-twitter::after {
+  background-image: url("../images/twitter-icon.svg");
+  background-size: 15px 14px;
+}
+.footer-social-list-link:hover {
+  background-color: #ffc700;
+}
+.footer-social-list-link:focus {
+  outline: 2px solid #af4fff;
+}
+.footer-social-list-link:active::after {
+  opacity: 0.3;
+}
+.footer-social-list-link:active {
+  outline: none;
 }
 .footer-phone {
   display: block;
   color: #fff;
   margin-bottom: 63px;
+  transition: 0.2s;
+}
+.footer-phone:hover {
+  color: #ffc700;
+}
+.footer-phone:focus {
+  outline: 2px solid #af4fff;
+}
+.footer-phone:active {
+  opacity: 0.3;
+  outline: none;
 }
 .footer .my-logo {
   font-family: "Raleway", sans-serif;
