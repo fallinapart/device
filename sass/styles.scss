@@ -42,6 +42,33 @@
 @mixin outline {
   outline: 2px solid #af4fff;
 }
+
+@mixin main-link {
+  font-family: "Raleway";
+  text-align: center;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: #000;
+  text-decoration: none;
+  text-transform: uppercase;
+  position: relative;
+  padding: 10px 15px;
+  transition: $transition;
+  z-index: 1;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 8px;
+    width: 100%;
+    background-color: $color-main;
+    z-index: -1;
+  }
+}
 // === / MIXINS ===
 
 
@@ -107,29 +134,7 @@ body {
 }
 
 .main-link {
-  font-family: "Raleway";
-  text-align: center;
-  font-size: 18px;
-  font-weight: 800;
-  letter-spacing: 0.2em;
-  color: #000;
-  text-decoration: none;
-  text-transform: uppercase;
-  position: relative;
-  padding: 10px 15px;
-  transition: $transition;
-
-  &::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 8px;
-    width: 100%;
-    background-color: $color-main;
-    z-index: -1;
-  }
+@include main-link;
 
   &:hover {
     background-color: $color-main;
@@ -1092,9 +1097,20 @@ body {
   &-content {
     display: flex;
     align-items: flex-start;
+    position: relative;
 
     &-right-column {
       margin-left: auto;
+    }
+
+    &::after {
+      position: absolute;
+      content: "";
+      background-color: $color-additional;
+      width: 80px;
+      height: 7px;
+      left: 0;
+      bottom: 20px;
     }
   }
 
@@ -1400,6 +1416,7 @@ body {
       background-color: #ebebeb;
       border: 2px solid #000;
       border-radius: 50%;
+      cursor: pointer;
 
       &:hover {
         border-color: rgba(0, 0, 0, 0.5);
@@ -1528,9 +1545,304 @@ body {
 // === / FILTERS ===
 
 // === PRODUCT CARDS ===
-.product-cards {
+.product-cards-container {
   display: flex;
   flex-direction: column;
+}
+
+.catalog-products-label {
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.sorting {
+  background-color: $color-background;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &-select {
+    @include rubik-regular;
+
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 18px;
+    appearance: none;
+    padding: 10px 34px 10px 2px;
+    background-image: url("../images/select-arrow.svg");
+    background-repeat: no-repeat;
+    background-size: 9px 6px;
+    background-position: center right 13px;
+
+    &:hover {
+      opacity: 0.6;
+    }
+
+    &:focus {
+      @include  outline;
+    }
+
+    &:active {
+      opacity: 0.3;
+      outline: none;
+    }
+  }
+
+  &-buttons-container {
+    display: flex;
+    align-items: center;
+  }
+
+  &-button {
+    position: relative;
+    border: none;
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+
+    &::after {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background-image: url("../images/sorting-button.svg");
+      background-repeat: no-repeat;
+      background-size: 11px 10px;
+      background-position: center;
+      opacity: 0.2;
+    }
+
+    &:last-child {
+      transform: rotate(180deg);
+    }
+
+    &:hover::after {
+      opacity: 0.5;
+    }
+
+    &:focus {
+      @include outline;
+    }
+
+    &:active::after {
+      opacity: 1;
+    }
+
+    &:active {
+      outline: none;
+    }
+  }
+}
+
+.product-cards {
+  background-color: #fff;
+  padding: 70px 40px 80px;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-list {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 44px;
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: 360px 360px;
+  gap: 44px 40px;
+}
+
+.product-card {
+  position: relative;
+
+  &:hover .product-card-link {
+    opacity: 0.5;
+  }
+
+  &:hover .more-information {
+    display: inline;
+  }
+
+  &:active .product-card-link {
+    opacity: 0.3;
+
+    &::after {
+      outline: none;
+    }
+  }
+
+  &:active .more-information::before {
+    background-color: $color-additional;
+  }
+
+  &-link {
+    color: #000;
+    text-decoration: none;
+    transition: $transition;
+
+    &::after {
+      @include outline;
+
+      position: absolute;
+      content: "";
+      background-color: transparent;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      display: none;    
+    }
+
+    &:focus {
+      outline: none;
+
+      &::after {
+        display: block;
+      }
+    }
+  }
+
+  &-image {
+    margin-bottom: 32px;
+  }
+
+  &-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &-title {
+    @include rubik-bold;
+
+    display: inline-block;
+    margin: 0;
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: -0.02em;
+    margin-right: auto;
+    max-width: 190px;
+  }
+
+  &-price {
+    @include rubik-regular;
+
+    font-size: 18px;
+    color: #444;
+  }
+}
+
+.more-information {
+  @include main-link;
+
+  position: absolute;
+  left: 25%;
+  top: 40%;
+  display: none;
+  cursor: pointer;
+}
+
+.button-show-more {
+  background-color: transparent;
+  padding: 18px 0;
+  border: 3px solid #E5E5E5;
+  font-family: "Raleway", sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  margin-bottom: 44px;
+
+  &:hover {
+    border-color: #000;
+  }
+
+  &:focus {
+    @include outline;
+  }
+
+  &:active {
+    opacity: 0.3;
+    outline: none;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ebebeb;
+
+  &-prev-next {
+    font-family: "Raleway", sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #000;
+    text-decoration: none;
+    padding: 25px;
+
+    &:hover {
+      background-color: #dcdcdc;
+    }
+
+    &:focus {
+      @include outline;
+    }
+
+    &:active {
+      color: rgba(0, 0, 0, 0.3);
+      outline: none;
+    }
+  }
+
+  &-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+  }
+
+  &-link {
+    @include rubik-regular;
+
+    font-size: 16px;
+    color: rgba(68, 68, 68, 0.3);
+    text-decoration: none;
+    padding: 10px 15px;
+
+    &-current {
+      color: rgba(68, 68, 68, 0.6);
+    }
+
+    &:hover {
+      color: rgba(68, 68, 68, 1);
+    }
+
+    &:focus {
+      @include outline;
+    }
+
+    &:active {
+      color: rgba(68, 68, 68, 0.1);
+      outline: none;
+    }
+
+  }
 }
 // === / PRODUCT CARDS ===
 

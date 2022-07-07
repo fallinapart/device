@@ -82,6 +82,7 @@ body {
   position: relative;
   padding: 10px 15px;
   transition: 0.2s;
+  z-index: 1;
 }
 .main-link::before {
   content: "";
@@ -910,9 +911,19 @@ body {
 .footer-content {
   display: flex;
   align-items: flex-start;
+  position: relative;
 }
 .footer-content-right-column {
   margin-left: auto;
+}
+.footer-content::after {
+  position: absolute;
+  content: "";
+  background-color: #ffc700;
+  width: 80px;
+  height: 7px;
+  left: 0;
+  bottom: 20px;
 }
 .footer-logo {
   display: inline-block;
@@ -1166,6 +1177,7 @@ body {
   background-color: #ebebeb;
   border: 2px solid #000;
   border-radius: 50%;
+  cursor: pointer;
 }
 .price-range-scale-button:hover {
   border-color: rgba(0, 0, 0, 0.5);
@@ -1270,9 +1282,289 @@ body {
   display: block;
 }
 
-.product-cards {
+.product-cards-container {
   display: flex;
   flex-direction: column;
+}
+
+.catalog-products-label {
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.sorting {
+  background-color: #f0f0f0;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sorting-select {
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  appearance: none;
+  padding: 10px 34px 10px 2px;
+  background-image: url("../images/select-arrow.svg");
+  background-repeat: no-repeat;
+  background-size: 9px 6px;
+  background-position: center right 13px;
+}
+.sorting-select:hover {
+  opacity: 0.6;
+}
+.sorting-select:focus {
+  outline: 2px solid #af4fff;
+}
+.sorting-select:active {
+  opacity: 0.3;
+  outline: none;
+}
+.sorting-buttons-container {
+  display: flex;
+  align-items: center;
+}
+.sorting-button {
+  position: relative;
+  border: none;
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.sorting-button::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-image: url("../images/sorting-button.svg");
+  background-repeat: no-repeat;
+  background-size: 11px 10px;
+  background-position: center;
+  opacity: 0.2;
+}
+.sorting-button:last-child {
+  transform: rotate(180deg);
+}
+.sorting-button:hover::after {
+  opacity: 0.5;
+}
+.sorting-button:focus {
+  outline: 2px solid #af4fff;
+}
+.sorting-button:active::after {
+  opacity: 1;
+}
+.sorting-button:active {
+  outline: none;
+}
+
+.product-cards {
+  background-color: #fff;
+  padding: 70px 40px 80px;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-list {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 44px;
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: 360px 360px;
+  gap: 44px 40px;
+}
+
+.product-card {
+  position: relative;
+}
+.product-card:hover .product-card-link {
+  opacity: 0.5;
+}
+.product-card:hover .more-information {
+  display: inline;
+}
+.product-card:active .product-card-link {
+  opacity: 0.3;
+}
+.product-card:active .product-card-link::after {
+  outline: none;
+}
+.product-card:active .more-information::before {
+  background-color: #ffc700;
+}
+.product-card-link {
+  color: #000;
+  text-decoration: none;
+  transition: 0.2s;
+}
+.product-card-link::after {
+  outline: 2px solid #af4fff;
+  position: absolute;
+  content: "";
+  background-color: transparent;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+.product-card-link:focus {
+  outline: none;
+}
+.product-card-link:focus::after {
+  display: block;
+}
+.product-card-image {
+  margin-bottom: 32px;
+}
+.product-card-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.product-card-title {
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  display: inline-block;
+  margin: 0;
+  font-size: 18px;
+  line-height: 20px;
+  letter-spacing: -0.02em;
+  margin-right: auto;
+  max-width: 190px;
+}
+.product-card-price {
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #444;
+}
+
+.more-information {
+  font-family: "Raleway";
+  text-align: center;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: #000;
+  text-decoration: none;
+  text-transform: uppercase;
+  position: relative;
+  padding: 10px 15px;
+  transition: 0.2s;
+  z-index: 1;
+  position: absolute;
+  left: 25%;
+  top: 40%;
+  display: none;
+  cursor: pointer;
+}
+.more-information::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 8px;
+  width: 100%;
+  background-color: #ffe17f;
+  z-index: -1;
+}
+
+.button-show-more {
+  background-color: transparent;
+  padding: 18px 0;
+  border: 3px solid #E5E5E5;
+  font-family: "Raleway", sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  margin-bottom: 44px;
+}
+.button-show-more:hover {
+  border-color: #000;
+}
+.button-show-more:focus {
+  outline: 2px solid #af4fff;
+}
+.button-show-more:active {
+  opacity: 0.3;
+  outline: none;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ebebeb;
+}
+.pagination-prev-next {
+  font-family: "Raleway", sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #000;
+  text-decoration: none;
+  padding: 25px;
+}
+.pagination-prev-next:hover {
+  background-color: #dcdcdc;
+}
+.pagination-prev-next:focus {
+  outline: 2px solid #af4fff;
+}
+.pagination-prev-next:active {
+  color: rgba(0, 0, 0, 0.3);
+  outline: none;
+}
+.pagination-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+}
+.pagination-link {
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(68, 68, 68, 0.3);
+  text-decoration: none;
+  padding: 10px 15px;
+}
+.pagination-link-current {
+  color: rgba(68, 68, 68, 0.6);
+}
+.pagination-link:hover {
+  color: rgb(68, 68, 68);
+}
+.pagination-link:focus {
+  outline: 2px solid #af4fff;
+}
+.pagination-link:active {
+  color: rgba(68, 68, 68, 0.1);
+  outline: none;
 }
 
 /*# sourceMappingURL=styles.css.map */
