@@ -79,8 +79,10 @@
     <!-- catalog-products -->
     <section class="catalog-products">
         <div class="catalog-products-container container">
+
+            <!-- filters -->
             <div class="filters">
-                <h3 class="filters-title">Фильтр:</h3>
+                <h3 class="filters-title catalog-">Фильтр:</h3>
                 <form class="filter-form" action="#">
                     <fieldset class="filter-form-fieldset">
                         <legend class="filter-form-fieldset-legend">Стоимость</legend>
@@ -155,12 +157,122 @@
                     <a class="main-link" href="#">Показать</a>
                 </form>
             </div>
-            <div class="product-cards">
+            <!-- / filters -->
 
+            <!-- product cards -->
+            <div class="product-cards-container">
+                <div class="sorting">
+                    <label class="sorting-label catalog-products-label" for="products-order">Сортировка:</label>
+                    <select class="sorting-select" name="products-order" id="products-order">
+                        <option value="popular">Популярные</option>
+                        <option value="expensive">Дорогие</option>
+                        <option value="cheap">Недорогие</option>
+                    </select>
+                    <div class="sorting-buttons-container">
+                        <button class="sorting-button"></button>
+                        <button class="sorting-button"></button>
+                    </div>
+                </div>
+                <div class="product-cards">
+                    <ul class="product-list">
+                        <li class="product-card">
+                            <a class="product-card-link" href="#">
+                                <img class="product-card-image" src="images/selfie-stick-amateur.jpg" alt="Изображение товара." width="360" height="380">
+                                <div class="product-card-text">
+                                    <h3 class="product-card-title">Любительская селфи-палка</h3>
+                                    <span class="product-card-price">500 ₽</span>
+                                </div>
+                            </a>
+                            <span class="more-information">Подробнее</span>
+                        </li>
+                        <li class="product-card">
+                            <a class="product-card-link" href="#">
+                                <img class="product-card-image" src="images/selfie-stick-professional.jpg" alt="Изображение товара." width="360" height="380">
+                                <div class="product-card-text">
+                                    <h3 class="product-card-title">Профессиональная селфи-палка</h3>
+                                    <span class="product-card-price">1500 ₽</span>
+                                </div>
+                            </a>
+                            <span class="more-information">Подробнее</span>
+                        </li>
+                        <li class="product-card">
+                            <a class="product-card-link" href="#">
+                                <img class="product-card-image" src="images/selfie-stick-unsinkable.jpg" alt="Изображение товара." width="360" height="380">
+                                <div class="product-card-text">
+                                    <h3 class="product-card-title">Непотопляемая селфи-палка</h3>
+                                    <span class="product-card-price">2500 ₽</span>
+                                </div>
+                            </a>
+                            <span class="more-information">Подробнее</span>
+                        </li>
+                        <li class="product-card">
+                            <a class="product-card-link" href="#">
+                                <img class="product-card-image" src="images/selfie-stick-follow-me.jpg" alt="Изображение товара." width="360" height="380">
+                                <div class="product-card-text">
+                                    <h3 class="product-card-title">Селфи-палка "Следуй за мной"</h3>
+                                    <span class="product-card-price">1500 ₽</span>
+                                </div>
+                            </a>
+                            <span class="more-information">Подробнее</span>
+                        </li>
+                    </ul>
+                    <button class="button-show-more" type="button">Загрузить ещё</button>
+                    <div class="pagination">
+                        <a class="pagination-prev-next" href="#">Назад</a>
+                        <ul class="pagination-list">
+                            <li class="pagination-item">
+                                <a class="pagination-link pagination-link-current" href="#">1</a>
+                            </li>
+                            <li class="pagination-item">
+                                <a class="pagination-link" href="#">2</a>
+                            </li>
+                            <li class="pagination-item">
+                                <a class="pagination-link" href="#">3</a>
+                            </li>
+                            <li class="pagination-item">
+                                <a class="pagination-link" href="#">...</a>
+                            </li>
+                            <li class="pagination-item">
+                                <a class="pagination-link" href="#">15</a>
+                            </li>
+                        </ul>
+                        <a class="pagination-prev-next" href="#">Вперёд</a>
+                    </div>
+                </div>
             </div>
         </div>
+        <!-- / product cards -->
     </section>
     <!-- / catalog-products -->
+
+    <!-- footer -->
+    <footer class="footer">
+        <div class="container">
+            <a class="footer-logo" href="#">
+                <img src="images/footer-logo.svg" alt="Логотип Device" width="145" height="36">
+            </a>
+            <div class="footer-content">
+                <p class="footer-address">Санкт-Петербург, набережная реки Карповки, 5, литера П.</p>
+                <div class="footer-content-center-column">
+                    <ul class="footer-menu">
+                        <li class="footer-menu-item"><a class="footer-menu-link" href="#">Доставка</a></li>
+                        <li class="footer-menu-item"><a class="footer-menu-link" href="#">Гарантия</a></li>
+                        <li class="footer-menu-item"><a class="footer-menu-link" href="#">Контакты</a></li>
+                    </ul>
+                    <ul class="footer-social-list">
+                        <li class="footer-social-list-item"><a class="footer-social-list-link footer-social-list-link-telegram" href="#"></a></li>
+                        <li class="footer-social-list-item"><a class="footer-social-list-link footer-social-list-link-youtube" href="#"></a></li>
+                        <li class="footer-social-list-item"><a class="footer-social-list-link footer-social-list-link-twitter" href="#"></a></li>
+                    </ul>
+                </div>
+                <div class="footer-content-right-column">
+                    <a class="footer-phone" href="#">Тел.: +7 (228) 444-83-22</a>
+                    <a class="my-logo" href="https://vk.com/zxcidc123">Олег<br>Шевченко</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- / footer -->
 
 </body>
 </html>
