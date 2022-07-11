@@ -648,6 +648,9 @@ body {
   background-color: #000;
   outline: none;
 }
+.services-button:focus {
+  outline: none;
+}
 .services-button:not(:last-of-type) {
   margin-bottom: 35px;
 }
@@ -656,16 +659,29 @@ body {
   position: relative;
   top: -30px;
 }
-.services-right-column::after {
-  content: url("../images/courier.svg");
-  width: 136px;
-  height: 164px;
-}
 .services-right-column-text {
   margin-right: 106px;
 }
 .services-right-column .section-title {
   margin-bottom: 34px;
+}
+.services-delivery::after {
+  content: url("../images/services-delivery.svg");
+  width: 136px;
+  height: 164px;
+}
+.services-warranty::after {
+  content: url("../images/services-warranty.svg");
+  width: 171px;
+  height: 195px;
+}
+.services-credit::after {
+  content: url("../images/services-credit.svg");
+  width: 156px;
+  height: 188px;
+}
+.services-closed {
+  display: none;
 }
 
 .delivery-button {
@@ -915,6 +931,9 @@ body {
 }
 .footer-content-right-column {
   margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .footer-content::after {
   position: absolute;
@@ -1047,6 +1066,7 @@ body {
   outline: none;
 }
 .footer .my-logo {
+  display: block;
   font-family: "Raleway", sans-serif;
   font-size: 20px;
   font-weight: 800;
@@ -1054,6 +1074,8 @@ body {
   cursor: pointer;
   text-decoration: none;
   transition: 0.2s;
+  text-align: center;
+  width: min-content;
 }
 .footer .my-logo:hover {
   color: violet;
@@ -1061,6 +1083,25 @@ body {
 .footer .my-logo:active {
   color: violet;
   opacity: 0.6;
+}
+.footer .my-logo:focus + .my-logo-heart {
+  display: block;
+}
+.footer .my-logo:focus {
+  outline: none;
+}
+.footer .my-logo-container {
+  position: relative;
+}
+.footer .my-logo-heart {
+  position: absolute;
+  top: -33px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 150px;
+  fill: #af4fff;
+  display: none;
 }
 
 .inner-header {

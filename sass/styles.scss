@@ -779,6 +779,10 @@ body {
         outline: none;
       }
     }
+
+    &:focus {
+      outline: none;
+    }
   }
 
   &-button:not(:last-of-type) {
@@ -791,12 +795,6 @@ body {
     position: relative;
     top: -30px;
 
-    &::after {
-      content: url("../images/courier.svg");
-      width: 136px;
-      height: 164px;
-    }
-
     &-text {
       margin-right: 106px;
     }
@@ -804,6 +802,28 @@ body {
     .section-title {
       margin-bottom: 34px;
     }
+  }
+
+  &-delivery::after {
+      content: url("../images/services-delivery.svg");
+      width: 136px;
+      height: 164px;
+  }
+  
+  &-warranty::after {
+    content: url("../images/services-warranty.svg");
+    width: 171px;
+    height: 195px;
+  }
+
+  &-credit::after {
+    content: url("../images/services-credit.svg");
+    width: 156px;
+    height: 188px;
+  }
+
+  &-closed {
+    display: none;
   }
 }
 // === / SERVICES ===
@@ -1101,6 +1121,9 @@ body {
 
     &-right-column {
       margin-left: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     &::after {
@@ -1262,6 +1285,7 @@ body {
   }
 
   .my-logo {
+    display: block;
     font-family: "Raleway", sans-serif;
     font-size: 20px;
     font-weight: 800;
@@ -1269,6 +1293,8 @@ body {
     cursor: pointer;
     text-decoration: none;
     transition: $transition;
+    text-align: center;
+    width: min-content;
 
     &:hover {
       color: violet;
@@ -1278,7 +1304,31 @@ body {
       color: violet;
       opacity: 0.6;
     }
+
+    &:focus + .my-logo-heart {
+      display: block;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &-container {
+      position: relative;
+    }
+
+    &-heart {
+      position: absolute;
+      top: -33px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
+      height: 150px;
+      fill: #af4fff;
+      display: none;
+    }
   }
+
 }
 // === / FOOTER ===
 
@@ -1850,4 +1900,3 @@ body {
 
 
 // -------------- / CATALOG --------------
-
